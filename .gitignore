@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.Python
+venv/
+env/
+*.egg-info/
+.pytest_cache/
+
+# Data (keep structure, ignore content)
+data/cache/
+data/input/*
+data/output/*
+!data/input/.gitkeep
+!data/output/.gitkeep
+*.jpg
+*.jpeg
+*.png
+*.mp4
+*.avi
+
+# Models (too large)
+models/*
+!models/README.md
+!models/.gitkeep
+
+# Logs
+*.log
+logs/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
