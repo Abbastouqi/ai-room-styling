@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Room Redesign Studio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-home"></i> AI Room Redesign Studio</h1>
+            <p>Transform your room with AI-powered interior design</p>
+        </header>
+
+        <main class="main-content">
+            <!-- Upload Section -->
+            <section class="upload-section">
+                <div class="upload-card">
+                    <div class="upload-area" id="uploadArea">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <h3>Upload Room Image or Video</h3>
+                        <p>Drag & drop or click to select</p>
+                        <input type="file" id="fileInput" accept="image/*,video/*" hidden>
+                    </div>
+                    <div class="file-info" id="fileInfo" style="display: none;">
+                        <i class="fas fa-file"></i>
+                        <span id="fileName"></span>
+                        <button class="remove-btn" id="removeFile"><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Style Selection -->
+            <section class="style-section">
+                <h2>Choose Your Style</h2>
+                <div class="style-grid">
+                    <div class="style-card" data-style="modern">
+                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=300&h=200&fit=crop" alt="Modern">
+                        <h3>Modern</h3>
+                        <p>Clean lines, minimal furniture</p>
+                    </div>
+                    <div class="style-card" data-style="luxury">
+                        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=300&h=200&fit=crop" alt="Luxury">
+                        <h3>Luxury</h3>
+                        <p>Premium materials, elegant design</p>
+                    </div>
+                    <div class="style-card" data-style="minimal">
+                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=300&h=200&fit=crop" alt="Minimal">
+                        <h3>Minimal</h3>
+                        <p>Simple, uncluttered spaces</p>
+                    </div>
+                    <div class="style-card" data-style="custom">
+                        <div class="custom-prompt">
+                            <i class="fas fa-edit"></i>
+                            <h3>Custom</h3>
+                            <p>Write your own prompt</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="custom-prompt-input" id="customPromptInput" style="display: none;">
+                    <textarea placeholder="Describe your ideal room design..." id="customPrompt"></textarea>
+                </div>
+            </section>
+
+            <!-- Advanced Options -->
+            <section class="options-section">
+                <div class="options-toggle">
+                    <h3><i class="fas fa-cog"></i> Advanced Options</h3>
+                    <button class="toggle-btn" id="optionsToggle">
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                </div>
+                <div class="options-content" id="optionsContent">
+                    <div class="option-group">
+                        <label>Quality vs Speed</label>
+                        <div class="slider-container">
+                            <span>Fast</span>
+                            <input type="range" id="qualitySlider" min="1" max="3" value="2">
+                            <span>High Quality</span>
+                        </div>
+                    </div>
+                    <div class="option-group">
+                        <label>
+                            <input type="checkbox" id="gpuAcceleration" checked>
+                            GPU Acceleration (Recommended)
+                        </label>
+                    </div>
+                    <div class="option-group">
+                        <label>
+                            <input type="checkbox" id="batchProcessing" checked>
+                            Batch Processing (Faster for videos)
+                        </label>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Generate Button -->
+            <section class="generate-section">
+                <button class="generate-btn" id="generateBtn" disabled>
+                    <i class="fas fa-magic"></i>
+                    Generate Redesign
+                </button>
+                <p class="estimate-time" id="estimateTime">Upload a file to see time estimate</p>
+            </section>
+
+            <!-- Progress Section -->
+            <section class="progress-section" id="progressSection" style="display: none;">
+                <div class="progress-header">
+                    <h3>Processing Your Room...</h3>
+                    <span class="progress-time" id="progressTime">0:00</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-stages">
+                    <div class="stage" id="stage1">
+                        <i class="fas fa-image"></i>
+                        <span>Processing Input</span>
+                    </div>
+                    <div class="stage" id="stage2">
+                        <i class="fas fa-search"></i>
+                        <span>Detecting Objects</span>
+                    </div>
+                    <div class="stage" id="stage3">
+                        <i class="fas fa-brain"></i>
+                        <span>Generating Prompts</span>
+                    </div>
+                    <div class="stage" id="stage4">
+                        <i class="fas fa-palette"></i>
+                        <span>Creating Design</span>
+                    </div>
+                </div>
+                <button class="cancel-btn" id="cancelBtn">
+                    <i class="fas fa-stop"></i>
+                    Cancel
+                </button>
+            </section>
+
+            <!-- Results Section -->
+            <section class="results-section" id="resultsSection" style="display: none;">
+                <h2>Your Redesigned Room</h2>
+                <div class="results-container">
+                    <div class="result-comparison">
+                        <div class="result-item">
+                            <h3>Original</h3>
+                            <div class="result-image" id="originalImage"></div>
+                        </div>
+                        <div class="result-item">
+                            <h3>Redesigned</h3>
+                            <div class="result-image" id="redesignedImage"></div>
+                        </div>
+                    </div>
+                    <div class="result-actions">
+                        <button class="download-btn" id="downloadBtn">
+                            <i class="fas fa-download"></i>
+                            Download Result
+                        </button>
+                        <button class="share-btn" id="shareBtn">
+                            <i class="fas fa-share"></i>
+                            Share
+                        </button>
+                        <button class="new-design-btn" id="newDesignBtn">
+                            <i class="fas fa-plus"></i>
+                            Create New Design
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2024 AI Room Redesign Studio. Powered by Stable Diffusion & ControlNet.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
