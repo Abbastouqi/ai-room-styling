@@ -41,12 +41,38 @@ Transform your room images and videos with AI-powered interior design using Stab
 - 20GB storage (SSD preferred)
 - Processing time: 30-60 seconds per image
 
-## 🛠️ Installation
+## 🛠️ Installation & Usage
+
+### Option 1: 🌐 Google Colab (Recommended - Free GPU!)
+
+**One-Click Launch:**
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Abbastouqi/ai-room-styling/blob/main/colab/AI_Room_Redesign_Colab.ipynb)
+
+**Quick Setup:**
+```python
+# In a Colab cell:
+!git clone https://github.com/Abbastouqi/ai-room-styling.git
+%cd ai-room-styling
+!python colab/quick_start.py
+
+# Then choose your method:
+simple_interface()    # Upload & process directly
+web_interface()       # Full web UI with ngrok
+advanced_usage()      # Custom Python code
+```
+
+**Why Colab?**
+- ✅ Free GPU access (T4, up to 12 hours)
+- ✅ No installation required
+- ✅ 30-60 seconds per image (vs 5-10 minutes on CPU)
+- ✅ Pre-configured environment
+
+### Option 2: 💻 Local Installation
 
 1. **Clone the repository**
 ```bash
-git clone <repository-url>
-cd room-redesign-studio
+git clone https://github.com/Abbastouqi/ai-room-styling.git
+cd ai-room-styling
 ```
 
 2. **Install dependencies**
@@ -68,6 +94,13 @@ The app will open automatically at `http://localhost:8080`
 
 ## 🎯 Quick Start
 
+### Google Colab (Easiest):
+1. **Click**: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Abbastouqi/ai-room-styling/blob/main/colab/AI_Room_Redesign_Colab.ipynb)
+2. **Enable GPU**: Runtime → Change runtime type → GPU
+3. **Run all cells** and upload your room image/video
+4. **Get results** in 30-60 seconds!
+
+### Local Installation:
 1. **Upload** an image or video of your room
 2. **Select** a design style (Modern, Luxury, Minimal, or Custom)
 3. **Configure** quality vs speed settings
